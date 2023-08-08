@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // --------------------------------------------------------------------------
 // 📌 [함수형 프로그래밍 기본 원칙]
 // --------------------------------------------------------------------------
@@ -66,7 +67,7 @@ function renderAlbumList(data, container) {
     </ul>
   `;
 
-  return container;
+  // return container;
 }
 
 function log(container) {
@@ -80,7 +81,8 @@ async function run() {
   );
   
   // 데이터 기반 렌더링
-  const container = renderAlbumList(responseData, document.getElementById('demo'));
+  const container = document.getElementById('demo');
+  renderAlbumList(responseData, container);
 
   // 로그
   log(container);

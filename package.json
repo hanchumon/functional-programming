@@ -7,6 +7,7 @@
   "dependencies": {
     "vite": "4.4.8"
   },
+<<<<<<< HEAD
   "name": "functional-programming",
   "description": "프로그래밍 패러다임을 살펴보고 각 방식에 대해 이해합니다.",
   "version": "1.0.0",
@@ -16,5 +17,9 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.46.0"
+=======
+  "devDependencies": {
+    "eslint": "8.46.0"
+>>>>>>> f571dc039fb18e8bac28cfbd404b758f1407b97a
   }
 }
