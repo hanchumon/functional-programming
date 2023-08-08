@@ -76,35 +76,45 @@ const updateSubjects = subjects.map(toTrim).map(toUpperCase).map(toUnderscore);
 // JavaScript 프로그래밍 패러다임
 // → 함수(function)를 사용해 구현합니다.
 
-function createCounterButton(element, { count = 0, step = 1, update = null } = {}) {
-  if (!element) {
-    throw new Error('element가 문서에 존재하지 않습니다.');
+function createCountUpButton(container, { count: initialCount = 0, step = 1, max }={}) {
+  if (!container || container.nodeType !== document.ELEMENT_NODE) {
+    throw new Error('container는 문서의 요소가 아닙니다.');
   }
 
-  const setCount = (newCount) => {
-    count = newCount;
-    element.textContent = count;
-  }
+  let count = initialCount;
 
-  element.addEventListener('click', () => {
-    setCount(count + step);
-    update?.(count);
-  });
+  const countUpButton = document.createElement('button');
 
-  setCount(count);
+  const render = (newCount) => {
+    countUpButton.textContent = String(newCount);
+  };
 
-  return element;
+  const handleCountUp = (e) => {
+    if(!max || count<max){
+      count += step;
+      render(count);
+    }else{
+      alert(`${max} 보다 더 많이 입력할 수 없습니다`)
+    }
+  };
+
+  countUpButton.setAttribute('type', 'button');
+  countUpButton.classList.add('CountUpButton');
+  countUpButton.addEventListener('click', handleCountUp);
+
+  render(count);
+
+  container.append(countUpButton);
 }
 
-const counter = createCounterButton(
-  document.createElement('button'), 
-  {
-    count: 1
-  }
-);
+const demoContainer = document.getElementById('demo');
 
-document.getElementById('demo')?.append(counter);
-
+// 재사용을 목적으로 하는 컴포넌트 (함수로 구현)
+/* 기본 옵션: { count: 0, step: 1, max = 10 } */
+createCountUpButton(demoContainer);
+createCountUpButton(demoContainer, { count: 1 }/* 사용자 정의 옵션 */);
+createCountUpButton(demoContainer, { count: 2 ,max:10});
+createCountUpButton(demoContainer, { count: 0, step: 6 });
 
 // --------------------------------------------------------------------------
 // JavaScript 프로그래밍 패러다임

@@ -6,5 +6,12 @@
   },
   "dependencies": {
     "vite": "4.4.8"
-  }
+  },
+  "name": "functional-programming",
+  "description": "프로그래밍 패러다임을 살펴보고 각 방식에 대해 이해합니다.",
+  "version": "1.0.0",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
