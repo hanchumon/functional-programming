@@ -34,3 +34,18 @@ body {
    justify-content: center;
    gap: 20px;
 }
+
+.output {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 12px;
+  background: #3a363c;
+  color: #fff;
+  text-shadow: 0 2px 4px #0004;
+  font-size: 28px;
+  font-weight: 800;
+}

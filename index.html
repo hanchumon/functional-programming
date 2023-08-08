@@ -13,10 +13,17 @@
 
   <div class="container">
     <!-- JavaScript로 동적 마크업, 스타일링, 스크립팅 -->
-    <div id="demo"></div>
+    <div id="demo" />
 
     <!-- Web Component로 동적 마크업, 스타일링, 스크립팅 -->
-    <counter-button count="3" step="3"></counter-button>
+    <!-- attribute => props -->
+    <counter-button count="99" step="-23"></counter-button>
+  </div>
+
+  <div class="output">
+    <span class="functional">1</span>
+    <span class="object-oriented">2</span>
+    <span class="web-component">3</span>
   </div>
 
 </body>

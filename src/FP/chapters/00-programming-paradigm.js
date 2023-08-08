@@ -107,7 +107,21 @@ function createCountUpButton(container, { count: initialCount = 0, step = 1, max
   container.append(countUpButton);
 }
 
+<<<<<<< HEAD
 const demoContainer = document.getElementById('demo');
+=======
+const counter = createCounterButton(
+  document.createElement('button'), 
+  {
+    count: 1,
+    update(count) {
+      document.querySelector('.functional').textContent = String(count);
+    }
+  }
+);
+
+document.getElementById('demo')?.append(counter);
+>>>>>>> a620efc41c1481d9916a3a8ab0461dae4b0d6176
 
 // 재사용을 목적으로 하는 컴포넌트 (함수로 구현)
 /* 기본 옵션: { count: 0, step: 1, max = 10 } */
@@ -202,6 +216,10 @@ const counterButton = new CounterButton(
   }
 );
 
+counterButton.update((count) => {
+  document.querySelector('.object-oriented').textContent = String(count);
+})
+
 counterButton.mount(document.getElementById('demo'));
 
 
@@ -234,7 +252,9 @@ class CounterButtonComponent extends HTMLElement {
       this.#setCount();
       this.render();
       // 참고: https://developer.mozilla.org/ko/docs/Web/Events/Creating_and_triggering_events
-      this.dispatchEvent(new CustomEvent('update', { detail: this.#config.count }));
+      this.dispatchEvent(new CustomEvent('update', { detail: {
+        count: this.#config.count
+      } }));
     }
   }
 
@@ -261,3 +281,9 @@ class CounterButtonComponent extends HTMLElement {
 }
 
 customElements.define('counter-button', CounterButtonComponent);
+
+const counterButtonEl = document.querySelector('counter-button');
+
+counterButtonEl.addEventListener('update', ({ detail: { count } }) => {
+  document.querySelector('.web-component').textContent = String(count);
+});
